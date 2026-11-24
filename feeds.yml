@@ -1,0 +1,59 @@
+# Fonti del digest. "all: true" = fonte primaria, niente filtro per parole chiave.
+# I feed diretti sono da verificare al primo avvio: gli errori compaiono nel log
+# e in fondo a ogni pagina settimanale. Le query Google News sono la rete di sicurezza.
+
+feeds:
+  # --- Query Google News (affidabili, restringono al dominio con site:) ---
+  - name: Garante Privacy (via Google News)
+    url: "https://news.google.com/rss/search?q=site:garanteprivacy.it+when:7d&hl=it&gl=IT&ceid=IT:it"
+    all: true
+  - name: ACN (via Google News)
+    url: "https://news.google.com/rss/search?q=site:acn.gov.it+when:7d&hl=it&gl=IT&ceid=IT:it"
+    all: true
+  - name: AgID (via Google News)
+    url: "https://news.google.com/rss/search?q=site:agid.gov.it+(sicurezza+OR+cybersicurezza+OR+AI)+when:7d&hl=it&gl=IT&ceid=IT:it"
+  - name: EDPB (via Google News)
+    url: "https://news.google.com/rss/search?q=site:edpb.europa.eu+when:7d&hl=it&gl=IT&ceid=IT:it"
+    all: true
+  - name: Normativa generale (via Google News)
+    url: "https://news.google.com/rss/search?q=(NIS2+OR+%22AI+Act%22+OR+GDPR+OR+DORA+OR+%22Cyber+Resilience+Act%22)+Italia+when:7d&hl=it&gl=IT&ceid=IT:it"
+
+  # --- Feed diretti (da verificare) ---
+  - name: Cybersecurity360
+    url: "https://www.cybersecurity360.it/feed/"
+  - name: Agenda Digitale
+    url: "https://www.agendadigitale.eu/feed/"
+  - name: ENISA
+    url: "https://www.enisa.europa.eu/media/news-items/news-wires/RSS"
+
+# Parole chiave -> categoria. Regex case-insensitive.
+keywords:
+  GDPR / Privacy:
+    - "\\bGDPR\\b"
+    - "garante (per la protezione dei dati|privacy)"
+    - "protezione dei dati"
+    - "data breach"
+    - "violazione dei dati"
+    - "\\bEDPB\\b"
+  NIS2 / Cybersicurezza:
+    - "\\bNIS ?2\\b"
+    - "direttiva NIS"
+    - "\\bACN\\b"
+    - "agenzia per la cybersicurezza"
+    - "perimetro di sicurezza nazionale"
+    - "cybersicurezza"
+    - "\\bENISA\\b"
+  AI Act:
+    - "\\bAI Act\\b"
+    - "intelligenza artificiale"
+    - "regolamento (UE )?2024/1689"
+    - "\\bAI Office\\b"
+  Settore finanziario / Altro:
+    - "\\bDORA\\b"
+    - "Cyber Resilience Act"
+    - "\\bCRA\\b"
+    - "D\\.?Lgs\\.? ?231"
+    - "whistleblowing"
+    - "\\beIDAS\\b"
+    - "\\bData Act\\b"
+    - "ISO ?27001"
